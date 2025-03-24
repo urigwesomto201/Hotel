@@ -54,49 +54,49 @@ exports.register = async(req, res)=>{
     }
 };
 
-exports.verifyUser = async(req, res)=>{
-    try {
-        //Get the token from the params
-    const {token} = req.params;
-    // Verify the token
-   const decodedToken = await jwt.verify(token, process.env.SECRET);
-   console.log(decodedToken)
-   // Find the user in the database
-   const user = await userModel.findById(decodedToken.userId);
-   console.log(user)
-   //Check if user still exists
-   if(user === null){
-    return res.status(404).json({
-        message: "User not found"
-    })
-   };
-   // Check if the user has already been verified
-   if(user.isVerified === true){
-    return res.status(400).json({
-        message: "User has already been verified, Please prpceed to login"
-    })
-   };
-   //Verify the user account
-   user.isVerified = true;
-   //save the changes to the database
-   await user.save();
-   // Send a succcess response
-   res.status(200).json({
-    message: "Account Verified Successfully"
-   });
+// exports.verifyUser = async(req, res)=>{
+//     try {
+//         //Get the token from the params
+//     const {token} = req.params;
+//     // Verify the token
+//    const decodedToken = await jwt.verify(token, process.env.SECRET);
+//    console.log(decodedToken)
+//    // Find the user in the database
+//    const user = await userModel.findById(decodedToken.userId);
+//    console.log(user)
+//    //Check if user still exists
+//    if(user === null){
+//     return res.status(404).json({
+//         message: "User not found"
+//     })
+//    };
+//    // Check if the user has already been verified
+//    if(user.isVerified === true){
+//     return res.status(400).json({
+//         message: "User has already been verified, Please prpceed to login"
+//     })
+//    };
+//    //Verify the user account
+//    user.isVerified = true;
+//    //save the changes to the database
+//    await user.save();
+//    // Send a succcess response
+//    res.status(200).json({
+//     message: "Account Verified Successfully"
+//    });
         
-    } catch (error) {
-        console.log(error.message)
-        if(error instanceof jwt.TokenExpiredError){
-            return res.status(400).json({
-                message: "Verification Link expired please resend a new Link"
-            })
-        }
-        res.status(500).json({
-            message: 'Internal Server Error'
-        })
-    }
-};
+//     } catch (error) {
+//         console.log(error.message)
+//         if(error instanceof jwt.TokenExpiredError){
+//             return res.status(400).json({
+//                 message: "Verification Link expired please resend a new Link"
+//             })
+//         }
+//         res.status(500).json({
+//             message: 'Internal Server Error'
+//         })
+//     }
+// };
 
 // exports.verifyUser = async(req, res)=>{
 //     try {
