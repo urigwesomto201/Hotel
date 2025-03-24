@@ -32,8 +32,8 @@ const swaggerDefinition = {
     version: '1.0.0',
     description: 'This is the first Swagger documentation I have ever done.',
     license: {
-      name: 'Licensed Under MIT',
-      url: 'https://spdx.org/licenses/MIT.html',
+      name: 
+      'Base_URL: https://hotel-m0xi.onrender.com ',
     },
     contact: {
       name: 'Strange',
@@ -60,7 +60,7 @@ security: [
       description: 'Development server',
     },
     {
-      url: 'http://localhost:8000',
+      url: 'https://hotel-m0xi.onrender.com',
       description: 'Production server',
     },
   ],
