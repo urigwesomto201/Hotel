@@ -56,12 +56,12 @@ security: [
 ],
   servers: [
     {
-      url: 'http://localhost:2030',
-      description: 'Development server',
-    },
-    {
       url: 'https://hotel-m0xi.onrender.com',
       description: 'Production server',
+    },
+    {
+      url: 'http://localhost:2030',
+      description: 'Development server',
     },
   ],
 
